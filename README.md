@@ -26,4 +26,13 @@ pipe.watch(itemid)
 ```
 - <strong>multi and execute</strong>
 When there are certain dependency in the db values, the best way to change them is to do so by using transactions. They follow a make or break principle i.e. either all of the operations listed in a transaction occur or none of them do. Thus nullifying any chance of partial data updation. The multi function in redis signifies the start of a transaction, and following which all the operations are queued until the exec keyword is reached. Once exec is encountered, all the operations are executed serially.
+```
+pipe.multi()
+pipe.hincrby(itemid, "quantity", -1)
+pipe.hincrby(itemid, "npurchased", 1)
+pipe.execute()
+```
 
+## watcher.py
+### Summary:
+Pythong script to check if a particular ip address is hitting our server more than 15 times in a min. The database and core concepts of redis are used to develop this script which can be handy to identify potential bot/scrappers.
