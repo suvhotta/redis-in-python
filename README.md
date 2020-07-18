@@ -34,5 +34,7 @@ pipe.execute()
 ```
 
 ## watcher.py
+This is a watcher to identify potential bots/scrappers who hit from the same ip address 15 times or more in a min. This has been implemented by using the zset data structure of redis. 
+
 ### Summary:
 Pythong script to check if a particular ip address is hitting our server more than 15 times in a min. The database and core concepts of redis are used to develop this script which can be handy to identify potential bot/scrappers.
